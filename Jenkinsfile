@@ -8,3 +8,12 @@ node {
   }
  
 }
+stage('Email Notification'){
+		mail bcc: '', body: """Hi Team, You build successfully deployed
+		                       Job URL : ${env.JOB_URL}
+							   Job Name: ${env.JOB_NAME}
+Thanks,
+DevOps Team""", cc: '', from: '', replyTo: '', subject: "${env.JOB_NAME} Success", to: 'golinux4@gmail.com'
+   
+   }
+}
