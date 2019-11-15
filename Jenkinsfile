@@ -3,7 +3,8 @@ node {
  git 'https://github.com/bingoassistance/my-app'
  }
  stage('Compile-Package'){
- sh 'mvn package'
+          def mvnHome= tool name: 'maven', type: 'maven'
+    sh "${mvnHome}/opt/mvn package"
   }
  
 }
