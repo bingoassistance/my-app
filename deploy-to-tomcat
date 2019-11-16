@@ -7,8 +7,9 @@ node {
     sh "${mvnHome}/bin/mvn package" 
 }
 stage('Deploy to Tomcat'){
-      sh 'scp -i /home/ec2-user/frank.pem StrictHostKeyChecking=no target/*.war ec2-user@18.195.89.230:/opt/tomcat/webapps'
-      }
+      #sh 'scp -i /home/ec2-user/frank.pem StrictHostKeyChecking=no target/*.war ec2-user@18.195.89.230:/opt/tomcat/webapps'
+       sh 'ssh telnet 18.195.89.230 22'
+}
    stage('Slack-Notification'){
    slackSend baseUrl: 'https://hooks.slack.com/services/', 
       channel: 'jenkins-pipeline-demo', 
