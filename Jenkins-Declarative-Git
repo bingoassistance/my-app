@@ -1,10 +1,17 @@
 pipeline{
      agent any
+     
+     environment{
+         PATH="/opt/maven/bin/mvn:$PATH"
+     }
      stages{
          stage("Git Checkout"){
              steps{
                  git credentialsId: 'github', url: 'https://github.com/bingoassistance/my-app'
                 }
             }
+            stage("Maven Build"){
+             steps{
+                 sh "mvn clean package"
         }
     }
