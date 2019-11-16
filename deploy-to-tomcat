@@ -4,8 +4,7 @@ node {
  }
  stage('Compile-Package'){
           def mvnHome= tool name: 'maven', type: 'maven'
-    sh "${mvnHome}/bin/mvn package"
- 
+    sh "${mvnHome}/bin/mvn package" 
 }
 stage('Deploy to Tomcat'){
       sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@18.195.89.230:/opt/tomcat/webapps
